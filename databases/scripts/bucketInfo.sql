@@ -87,3 +87,4 @@ SELECT "busNetwork".calculate_buckets_for_route('53IN')
 
 --select table bucketInfo
 SELECT * FROM "busNetwork"."bucketInfo"
+ORDER BY "routeID";
