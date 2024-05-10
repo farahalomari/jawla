@@ -3,6 +3,35 @@
 -- DROP FUNCTION IF EXISTS "busNetwork".calculate_buckets_for_route(character varying);
 
 --function to calculate buckets for a route
+
+-- Define schema
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.schemata WHERE schema_name = 'busNetwork'
+    ) THEN
+        CREATE SCHEMA "busNetwork";
+    END IF;
+END $$;
+
+-- Table: busNetwork.routes
+
+-- DROP TABLE IF EXISTS "busNetwork"."routes";
+
+CREATE TABLE IF NOT EXISTS "busNetwork"."bucketInfo"
+(
+    "routeID" character varying COLLATE pg_catalog."default" NOT NULL,
+    "nodesInBucket" integer[],
+    "numBuckets" integer,
+    CONSTRAINT uq_route_id UNIQUE ("routeID"),
+    CONSTRAINT fk_bucket_info_route FOREIGN KEY ("routeID")
+        REFERENCES "busNetwork".routes ("routeID") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+
+
 CREATE OR REPLACE FUNCTION "busNetwork".calculate_buckets_for_route(
 	"routeID" character varying)
     RETURNS void
