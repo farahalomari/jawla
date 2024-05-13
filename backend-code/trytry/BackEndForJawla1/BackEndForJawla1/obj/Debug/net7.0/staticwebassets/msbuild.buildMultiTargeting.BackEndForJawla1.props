@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BackEndForJawla1.props" />
+</Project>
