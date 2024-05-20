@@ -28,9 +28,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ],
               ),
-            )
-        )
-    );
+            )));
   }
 }
 
@@ -41,7 +39,6 @@ class TitleSection extends StatelessWidget {
   });
 
   final String name;
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,38 +51,34 @@ class TitleSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
+                    Navigator.push(
+                        context,
                         MaterialPageRoute(
                             builder: (context) => const SignupScreen()));
-                  }, /*2*/
-                  child:Icon(
-                      Icons.directions_bus,
-                      color: Colors.pink[500],
-                      size:330
-                  ),
+                  },
+                  /*2*/
+                  child: Icon(Icons.directions_bus,
+                      color: Colors.pink[500], size: 330),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom:0,right:40,left:40
-                  ),
+                  padding:
+                      const EdgeInsets.only(bottom: 0, right: 40, left: 40),
                   child: Text(
                     name,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,fontSize:30,
-                      color:Colors.black87,
-
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.black87,
                     ),
                     textAlign: TextAlign.center,
                   ),
                 ),
-
               ],
             ),
           ),
           /*3*/
-
         ],
       ),
     );
